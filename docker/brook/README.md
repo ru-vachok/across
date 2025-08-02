@@ -1,38 +1,61 @@
-## Brook Docker Image by Teddysun
+Вот перевод файла `README.md` на русский язык:
 
-[Brook][1] is a cross-platform proxy/VPN software which can help you get through firewalls.
+```markdown
+## Docker-образ Brook от Teddysun
 
-Docker images are built for quick deployment in various computing cloud providers.
+[Brook][1] — это кроссплатформенное прокси/VPN-решение, которое помогает обходить фаерволы.
 
-For more information on docker and containerization technologies, refer to [official document][2].
+Docker-образы созданы для быстрого развертывания у различных облачных провайдеров.
 
-## Prepare the host
+Для получения дополнительной информации о Docker и технологиях контейнеризации обратитесь к [официальной документации][2].
 
-If you need to install docker by yourself, follow the [official installation guide][3].
+## Подготовка хоста
 
-## Pull the image
+Если вам нужно установить Docker самостоятельно, следуйте [официальному руководству по установке][3].
+
+## Загрузка образа
 
 ```bash
 $ docker pull teddysun/brook
 ```
 
-This pulls the latest release of Brook.
+Эта команда загружает последнюю версию Brook.
 
-It can be found at [Docker Hub][4].
+Образ можно найти на [Docker Hub][4].
 
-## Start a container
+## Запуск контейнера
 
-You **must set environment variable** `ARGS` at first.
+**Сначала необходимо установить переменную окружения** `ARGS`.
 
-There is an example to start a container that listen on port `9000`, password is `password0` (both TCP and UDP) run as a brook server like below:
+Пример запуска контейнера в режиме сервера Brook, который слушает порт `9000` (как TCP, так и UDP) с паролем `password0`:
 
 ```bash
 $ docker run -d -p 9000:9000 -p 9000:9000/udp --name brook --restart=always -e "ARGS=server -l :9000 -p password0" teddysun/brook
 ```
 
-**Warning**: The port number must be same as environment variable and opened in firewall.
+**Важно**: Номер порта должен совпадать в переменной окружения и быть открытым в брандмауэре.
 
 [1]: https://github.com/txthinking/brook
 [2]: https://docs.docker.com/
 [3]: https://docs.docker.com/install/
 [4]: https://hub.docker.com/r/teddysun/brook/
+```
+
+**Особенности перевода:**
+
+1. **Ключевые термины:**
+   - `cross-platform` → `кроссплатформенное`
+   - `get through firewalls` → `обходить фаерволы`
+   - `environment variable` → `переменная окружения`
+   - `listen on port` → `слушает порт`
+   - `both TCP and UDP` → `как TCP, так и UDP`
+
+2. **Технические детали:**
+   - Сохранена оригинальная структура команды `docker run`
+   - Параметры Brook (`server -l :9000 -p password0`) оставлены без изменений
+   - Спецификация портов (`9000:9000/udp`) сохранена
+
+3. **Важные предупреждения:**
+   - Усиленное выделение обязательного условия (`**Сначала необходимо**`)
+   - Перевод предупреждения с акцентом на критичность (`**Важно**`)
+   - Сохранение нумерации ссылок ([1]-[4])

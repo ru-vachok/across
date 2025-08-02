@@ -1,35 +1,60 @@
-## KMS Server Docker Image by Teddysun
+Отлично, вот перевод файла `README.md` на русский язык:
 
-This is A fully Microsoft compatible KMS server with Docker Image.
+```markdown
+## Docker-образ KMS-сервера от Teddysun
 
-vlmcsd is a fully Microsoft compatible KMS server that provides product activation services to clients. It is meant as a drop-in replacement for a Microsoft KMS server (Windows computer with KMS key entered). It currently supports KMS protocol versions 4, 5 and 6.
+Это полностью совместимый с Microsoft KMS-сервер в виде Docker-образа.
 
-vlmcsd is designed to run on POSIX compatible operating systens. It only requires a basic C library with a BSD-style sockets API and either `fork` or `pthreads`. That allows it to run on most embedded systems like routers, NASes, mobile phones, tablets, TVs, settop boxes, etc. Some efforts have been made that it also runs on Windows.
+`vlmcsd` — это полностью совместимый с Microsoft KMS-сервер, предоставляющий услуги активации продуктов клиентам. Он предназначен для использования в качестве прямой замены официального Microsoft KMS-сервера (компьютера Windows, на котором введен KMS-ключ). В настоящее время он поддерживает версии протокола KMS 4, 5 и 6.
 
-## Prepare the host
+`vlmcsd` разработан для работы в POSIX-совместимых операционных системах. Для его работы требуется базовая C-библиотека с API сокетов в стиле BSD и либо `fork`, либо `pthreads`. Это позволяет запускать его на большинстве встроенных систем, таких как маршрутизаторы, NAS, мобильные телефоны, планшеты, телевизоры, ТВ-приставки и т.д. Также были приложены усилия для обеспечения его работы в Windows.
 
-Docker images are built for quick deployment in various computing cloud providers.
-For more information on docker and containerization technologies, refer to [official document][1].
+## Подготовка хоста
 
-If you need to install docker by yourself, follow the [official installation guide][2].
+Docker-образы созданы для быстрого развертывания у различных облачных провайдеров.
+Для получения дополнительной информации о Docker и технологиях контейнеризации обратитесь к [официальной документации][1].
 
-## Pull the image
+Если вам нужно установить Docker самостоятельно, следуйте [официальному руководству по установке][2].
+
+## Загрузка образа
 
 ```bash
 $ docker pull teddysun/kms
 ```
 
-This pulls the latest release of KMS Server.
-It can be found at [Docker Hub][3].
+Эта команда загружает последний выпуск KMS-сервера.
+Образ можно найти на [Docker Hub][3].
 
-## Start a container
+## Запуск контейнера
 
 ```bash
 $ docker run -d -p 1688:1688 --name kms --restart=always teddysun/kms
 ```
 
-**Note**: The TCP port number `1688` must be opened in firewall.
+**Примечание**: TCP-порт `1688` должен быть открыт в брандмауэре.
 
 [1]: https://docs.docker.com/
 [2]: https://docs.docker.com/install/
 [3]: https://hub.docker.com/r/teddysun/kms/
+```
+
+**Ключевые моменты перевода:**
+
+1.  **Терминология:**
+    *   `KMS server` -> `KMS-сервер` (сохранение общепринятого термина)
+    *   `fully Microsoft compatible` -> `полностью совместимый с Microsoft` (точная передача совместимости)
+    *   `drop-in replacement` -> `прямая замена` (понятное выражение)
+    *   `product activation services` -> `услуги активации продуктов`
+    *   `POSIX compatible operating systems` -> `POSIX-совместимых операционных систем`
+    *   `embedded systems` -> `встроенные системы`
+    *   `Pull the image` -> `Загрузка образа` (стандартный термин Docker)
+    *   `Start a container` -> `Запуск контейнера` (стандартный термин Docker)
+    *   `TCP port number must be opened in firewall` -> `TCP-порт ... должен быть открыт в брандмауэре`
+
+2.  **Структура и форматирование:**
+    *   Сохранена исходная структура Markdown (заголовки, списки, код).
+    *   Команды Docker (`docker pull`, `docker run`) оставлены без изменений.
+    *   Ссылки ([1], [2], [3]) сохранены в оригинальном формате.
+    *   Выделение **Примечание** (`**Примечание**:`) передано аналогично.
+
+3.  **Стиль:** Использован технически точный, но понятный русский язык, соответствующий стилю документации.

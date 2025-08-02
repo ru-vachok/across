@@ -1,38 +1,41 @@
-## Xray Docker Image by Teddysun
+Вот перевод файла `README.md` на русский язык:
 
-[Xray][1] is a platform for building proxies to bypass network restrictions.
+```markdown
+## Docker-образ Xray от Teddysun
 
-It secures your network connections and thus protects your privacy.
+[Xray][1] — это платформа для создания прокси-серверов, позволяющих обходить сетевые ограничения.
 
-Docker images are built for quick deployment in various computing cloud providers.
+Он защищает ваши сетевые соединения и тем самым обеспечивает конфиденциальность.
 
-For more information on docker and containerization technologies, refer to [official document][2].
+Docker-образы созданы для быстрого развертывания у различных облачных провайдеров.
 
-## Prepare the host
+Для получения дополнительной информации о Docker и технологиях контейнеризации обратитесь к [официальной документации][2].
 
-If you need to install docker by yourself, follow the [official installation guide][3].
+## Подготовка хоста
 
-## Pull the image
+Если вам нужно установить Docker самостоятельно, следуйте [официальному руководству по установке][3].
+
+## Загрузка образа
 
 ```bash
 $ docker pull teddysun/xray
 ```
 
-This pulls the latest release of Xray.
+Эта команда загружает последнюю версию Xray.
 
-It can be found at [Docker Hub][4].
+Образ можно найти на [Docker Hub][4].
 
-## Start a container
+## Запуск контейнера
 
-You **must create a configuration file**  `/etc/xray/config.json` in host at first:
+**Сначала необходимо создать конфигурационный файл** `/etc/xray/config.json` на хосте:
 
 ```
 $ mkdir -p /etc/xray
 ```
 
-A sample in JSON like below:
+Пример конфигурации в формате JSON:
 
-```
+```json
 {
   "inbounds": [{
     "port": 9000,
@@ -52,17 +55,43 @@ A sample in JSON like below:
 }
 ```
 
-Or some examples of uses for Xray-core [https://github.com/XTLS/Xray-examples](https://github.com/XTLS/Xray-examples)
+Дополнительные примеры использования Xray-core можно найти здесь:  
+[https://github.com/XTLS/Xray-examples](https://github.com/XTLS/Xray-examples)
 
-There is an example to start a container that listen on port `9000`, run as a Xray server like below:
+Пример запуска контейнера в режиме сервера Xray, слушающего порт `9000`:
 
 ```bash
 $ docker run -d -p 9000:9000 --name xray --restart=always -v /etc/xray:/etc/xray teddysun/xray
 ```
 
-**Warning**: The port number must be same as configuration and opened in firewall.
+**Важно**: Номер порта должен совпадать в конфигурации и быть открытым в брандмауэре.
 
 [1]: https://github.com/XTLS/Xray-core
 [2]: https://docs.docker.com/
 [3]: https://docs.docker.com/install/
 [4]: https://hub.docker.com/r/teddysun/xray/
+```
+
+**Ключевые особенности перевода:**
+
+1. **Терминология:**
+   - `bypass network restrictions` → `обходить сетевые ограничения`
+   - `secures your network connections` → `защищает ваши сетевые соединения`
+   - `protects your privacy` → `обеспечивает конфиденциальность`
+   - `configuration file` → `конфигурационный файл`
+
+2. **Технические детали:**
+   - JSON-конфигурация оставлена без изменений
+   - Параметры протокола (`vmess`, `freedom`) сохранены
+   - Пример UUID оставлен оригинальным
+   - Ссылка на примеры использования переведена с сохранением URL
+
+3. **Команды Docker:**
+   - Все команды терминала сохранены в оригинале
+   - Параметры монтирования томов (`-v /etc/xray:/etc/xray`) не изменены
+   - Флаг автоматического перезапуска (`--restart=always`) сохранен
+
+4. **Важные примечания:**
+   - Обязательность создания конфига выделена (`**Сначала необходимо**`)
+   - Предупреждение переведено как `**Важно**` для единообразия
+   - Указание на критичность совпадения портов усилено

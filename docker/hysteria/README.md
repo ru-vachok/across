@@ -1,36 +1,39 @@
-## Hysteria Docker Image by Teddysun
+Вот перевод файла `README.md` на русский язык:
 
-[Hysteria][1] is a feature-packed proxy & relay utility optimized for lossy, unstable connections, powered by a customized QUIC protocol.
+```markdown
+## Docker-образ Hysteria от Teddysun
 
-Docker images are built for quick deployment in various computing cloud providers.
+[Hysteria][1] — это многофункциональное прокси и релейное решение, оптимизированное для нестабильных соединений с потерями пакетов, использующее модифицированный протокол QUIC.
 
-For more information on docker and containerization technologies, refer to [official document][2].
+Docker-образы созданы для быстрого развертывания у различных облачных провайдеров.
 
-## Prepare the host
+Для получения дополнительной информации о Docker и технологиях контейнеризации обратитесь к [официальной документации][2].
 
-If you need to install docker by yourself, follow the [official installation guide][3].
+## Подготовка хоста
 
-## Pull the image
+Если вам нужно установить Docker самостоятельно, следуйте [официальному руководству по установке][3].
+
+## Загрузка образа
 
 ```bash
 $ docker pull teddysun/hysteria
 ```
 
-This pulls the latest release of Hysteria.
+Эта команда загружает последнюю версию Hysteria.
 
-It can be found at [Docker Hub][4].
+Образ можно найти на [Docker Hub][4].
 
-## Start a container
+## Запуск контейнера
 
-You **must create a configuration file**  `/etc/hysteria/server.yaml` in host at first:
+**Сначала необходимо создать конфигурационный файл** `/etc/hysteria/server.yaml` на хосте:
 
 ```
 $ mkdir -p /etc/hysteria
 ```
 
-A sample in yaml like below:
+Пример конфигурации в формате YAML:
 
-```
+```yaml
 listen: :8998
 
 tls:
@@ -48,17 +51,41 @@ resolver:
     timeout: 10s
 ```
 
-And put the `cert.crt`, `private.key` to the `/etc/hysteria/`.
+Поместите файлы `cert.crt` и `private.key` в директорию `/etc/hysteria/`.
 
-There is an example to start a container that listen on port `8998`, run as a Hysteria server like below:
+Пример запуска контейнера в режиме сервера Hysteria, слушающего порт `8998`:
 
 ```bash
 $ docker run -d -p 8998:8998 --name hysteria --restart=always -v /etc/hysteria:/etc/hysteria teddysun/hysteria
 ```
 
-**Warning**: The port number must be same as configuration and opened in firewall.
+**Важно**: Номер порта должен совпадать в конфигурации и быть открытым в брандмауэре.
 
 [1]: https://github.com/apernet/hysteria
 [2]: https://docs.docker.com/
 [3]: https://docs.docker.com/install/
 [4]: https://hub.docker.com/r/teddysun/hysteria/
+```
+
+**Ключевые особенности перевода:**
+
+1. **Терминология:**
+   - `feature-packed` → `многофункциональное`
+   - `proxy & relay utility` → `прокси и релейное решение`
+   - `lossy, unstable connections` → `нестабильных соединений с потерями пакетов`
+   - `customized QUIC protocol` → `модифицированный протокол QUIC`
+
+2. **Конфигурация:**
+   - YAML-конфиг оставлен без изменений (технический синтаксис)
+   - Комментарии к полям конфига не добавлены (сохранение оригинальной структуры)
+   - Пути файлов (`/etc/hysteria/cert.crt`) сохранены
+
+3. **Команды:**
+   - Все команды терминала оставлены без изменений
+   - Параметры монтирования томов (`-v /etc/hysteria:/etc/hysteria`) сохранены
+   - Флаг автоматического перезапуска (`--restart=always`) оставлен
+
+4. **Важные заметки:**
+   - Обязательность создания конфига выделена (`**Сначала необходимо**`)
+   - Предупреждение переведено как `**Важно**` для единообразия
+   - Указание на критичность совпадения портов усилено
